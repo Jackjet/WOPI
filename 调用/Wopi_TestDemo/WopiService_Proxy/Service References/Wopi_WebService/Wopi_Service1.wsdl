@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s1="http://tempuri.org/AbstractTypes" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="Get_Link">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="fileNmae" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_LinkResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Get_LinkResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UploadFile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="fileNmae" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="documentData" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UploadFileResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UploadFileResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UploadFile_GetLink">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="fileNmae" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="documentData" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UploadFile_GetLinkResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UploadFile_GetLinkResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Delete_File">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="fileNmae" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Delete_FileResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Delete_FileResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+      <s:element name="boolean" type="s:boolean" />
+    </s:schema>
+    <s:schema targetNamespace="http://tempuri.org/AbstractTypes">
+      <s:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+      <s:complexType name="StringArray">
+        <s:complexContent mixed="false">
+          <s:restriction base="soapenc:Array">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="unbounded" name="String" type="s:string" />
+            </s:sequence>
+          </s:restriction>
+        </s:complexContent>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="Get_LinkSoapIn">
+    <wsdl:part name="parameters" element="tns:Get_Link" />
+  </wsdl:message>
+  <wsdl:message name="Get_LinkSoapOut">
+    <wsdl:part name="parameters" element="tns:Get_LinkResponse" />
+  </wsdl:message>
+  <wsdl:message name="UploadFileSoapIn">
+    <wsdl:part name="parameters" element="tns:UploadFile" />
+  </wsdl:message>
+  <wsdl:message name="UploadFileSoapOut">
+    <wsdl:part name="parameters" element="tns:UploadFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="UploadFile_GetLinkSoapIn">
+    <wsdl:part name="parameters" element="tns:UploadFile_GetLink" />
+  </wsdl:message>
+  <wsdl:message name="UploadFile_GetLinkSoapOut">
+    <wsdl:part name="parameters" element="tns:UploadFile_GetLinkResponse" />
+  </wsdl:message>
+  <wsdl:message name="Delete_FileSoapIn">
+    <wsdl:part name="parameters" element="tns:Delete_File" />
+  </wsdl:message>
+  <wsdl:message name="Delete_FileSoapOut">
+    <wsdl:part name="parameters" element="tns:Delete_FileResponse" />
+  </wsdl:message>
+  <wsdl:message name="Get_LinkHttpGetIn">
+    <wsdl:part name="fileNmae" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Get_LinkHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="UploadFileHttpGetIn">
+    <wsdl:part name="fileNmae" type="s:string" />
+    <wsdl:part name="documentData" type="s1:StringArray" />
+  </wsdl:message>
+  <wsdl:message name="UploadFileHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="UploadFile_GetLinkHttpGetIn">
+    <wsdl:part name="fileNmae" type="s:string" />
+    <wsdl:part name="documentData" type="s1:StringArray" />
+  </wsdl:message>
+  <wsdl:message name="UploadFile_GetLinkHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Delete_FileHttpGetIn">
+    <wsdl:part name="fileNmae" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Delete_FileHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="Get_LinkHttpPostIn">
+    <wsdl:part name="fileNmae" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Get_LinkHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="UploadFileHttpPostIn">
+    <wsdl:part name="fileNmae" type="s:string" />
+    <wsdl:part name="documentData" type="s1:StringArray" />
+  </wsdl:message>
+  <wsdl:message name="UploadFileHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="UploadFile_GetLinkHttpPostIn">
+    <wsdl:part name="fileNmae" type="s:string" />
+    <wsdl:part name="documentData" type="s1:StringArray" />
+  </wsdl:message>
+  <wsdl:message name="UploadFile_GetLinkHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Delete_FileHttpPostIn">
+    <wsdl:part name="fileNmae" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Delete_FileHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:portType name="Wopi_ServiceSoap">
+    <wsdl:operation name="Get_Link">
+      <wsdl:input message="tns:Get_LinkSoapIn" />
+      <wsdl:output message="tns:Get_LinkSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadFile">
+      <wsdl:input message="tns:UploadFileSoapIn" />
+      <wsdl:output message="tns:UploadFileSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadFile_GetLink">
+      <wsdl:input message="tns:UploadFile_GetLinkSoapIn" />
+      <wsdl:output message="tns:UploadFile_GetLinkSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Delete_File">
+      <wsdl:input message="tns:Delete_FileSoapIn" />
+      <wsdl:output message="tns:Delete_FileSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="Wopi_ServiceHttpGet">
+    <wsdl:operation name="Get_Link">
+      <wsdl:input message="tns:Get_LinkHttpGetIn" />
+      <wsdl:output message="tns:Get_LinkHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadFile">
+      <wsdl:input message="tns:UploadFileHttpGetIn" />
+      <wsdl:output message="tns:UploadFileHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadFile_GetLink">
+      <wsdl:input message="tns:UploadFile_GetLinkHttpGetIn" />
+      <wsdl:output message="tns:UploadFile_GetLinkHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Delete_File">
+      <wsdl:input message="tns:Delete_FileHttpGetIn" />
+      <wsdl:output message="tns:Delete_FileHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="Wopi_ServiceHttpPost">
+    <wsdl:operation name="Get_Link">
+      <wsdl:input message="tns:Get_LinkHttpPostIn" />
+      <wsdl:output message="tns:Get_LinkHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadFile">
+      <wsdl:input message="tns:UploadFileHttpPostIn" />
+      <wsdl:output message="tns:UploadFileHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadFile_GetLink">
+      <wsdl:input message="tns:UploadFile_GetLinkHttpPostIn" />
+      <wsdl:output message="tns:UploadFile_GetLinkHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Delete_File">
+      <wsdl:input message="tns:Delete_FileHttpPostIn" />
+      <wsdl:output message="tns:Delete_FileHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="Wopi_ServiceSoap" type="tns:Wopi_ServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Get_Link">
+      <soap:operation soapAction="http://tempuri.org/Get_Link" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadFile">
+      <soap:operation soapAction="http://tempuri.org/UploadFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadFile_GetLink">
+      <soap:operation soapAction="http://tempuri.org/UploadFile_GetLink" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete_File">
+      <soap:operation soapAction="http://tempuri.org/Delete_File" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="Wopi_ServiceSoap12" type="tns:Wopi_ServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Get_Link">
+      <soap12:operation soapAction="http://tempuri.org/Get_Link" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadFile">
+      <soap12:operation soapAction="http://tempuri.org/UploadFile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadFile_GetLink">
+      <soap12:operation soapAction="http://tempuri.org/UploadFile_GetLink" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete_File">
+      <soap12:operation soapAction="http://tempuri.org/Delete_File" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="Wopi_ServiceHttpGet" type="tns:Wopi_ServiceHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="Get_Link">
+      <http:operation location="/Get_Link" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadFile">
+      <http:operation location="/UploadFile" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadFile_GetLink">
+      <http:operation location="/UploadFile_GetLink" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete_File">
+      <http:operation location="/Delete_File" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="Wopi_ServiceHttpPost" type="tns:Wopi_ServiceHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="Get_Link">
+      <http:operation location="/Get_Link" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadFile">
+      <http:operation location="/UploadFile" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadFile_GetLink">
+      <http:operation location="/UploadFile_GetLink" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete_File">
+      <http:operation location="/Delete_File" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Wopi_Service">
+    <wsdl:port name="Wopi_ServiceSoap" binding="tns:Wopi_ServiceSoap">
+      <soap:address location="http://192.168.1.111:1313/Wopi_Service.asmx" />
+    </wsdl:port>
+    <wsdl:port name="Wopi_ServiceSoap12" binding="tns:Wopi_ServiceSoap12">
+      <soap12:address location="http://192.168.1.111:1313/Wopi_Service.asmx" />
+    </wsdl:port>
+    <wsdl:port name="Wopi_ServiceHttpGet" binding="tns:Wopi_ServiceHttpGet">
+      <http:address location="http://192.168.1.111:1313/Wopi_Service.asmx" />
+    </wsdl:port>
+    <wsdl:port name="Wopi_ServiceHttpPost" binding="tns:Wopi_ServiceHttpPost">
+      <http:address location="http://192.168.1.111:1313/Wopi_Service.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,1 @@
+﻿<%@ WebService Language="C#" CodeBehind="WopiHelper.asmx.cs" Class="Wopi_Service.WopiHelper" %>
